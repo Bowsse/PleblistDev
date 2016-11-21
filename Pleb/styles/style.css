@@ -5,7 +5,7 @@ body {
     background-repeat: no-repeat;
     background-position: right bottom 49px, left bottom;
     /*background-size: 800px 800px, auto;*/
-	background-size: auto;
+    background-size: auto;
     background-attachment: fixed;
 }
 header {
@@ -151,9 +151,9 @@ article.post {
     height: auto;
 }
 article.dokumentti {
-	width: auto;
-	height: auto;
-	margin-bottom: 100px;
+    width: auto;
+    height: auto;
+    margin-bottom: 100px;
 }
 #playerButtons {
     width: 100%;
@@ -287,7 +287,7 @@ input.loginInput {
     float: left;
 }
 #chat {
-    background-color: rgba(255, 255, 255, 0.8);
+    /*background-color: rgba(255, 255, 255, 0.8);
     position: static;
     max-width: 40%;
     max-height: 700px;
@@ -296,8 +296,8 @@ input.loginInput {
     border-right: 14px solid #FF9DC6;
     box-shadow: 0px 3px 10px -2px #808080;
     border-radius: 0px 10px 10px 0px;
+    */
     overflow: auto;
-    float: left;
 }
 #playlistButton{
     position: absolute;
@@ -324,12 +324,12 @@ iframe {
     height: 100%;
     top: 0;
     left: 0;
-	pointer-events: none;
+    pointer-events: none;
 }
 td {
     width: 100%;
     height: 63px;
-	padding: 0px 5px 0px 0px;
+    padding: 0px 5px 0px 0px;
     color: black;
     white-space: nowrap;
 }
@@ -357,19 +357,48 @@ footer {
     box-shadow: inset 0px 7px 10px -7px black;
 }
 ul {
-	max-height: 70px;
-	padding: 0;
-	margin: 0;
+    max-height: 70px;
+    padding: 0;
+    margin: 0;
 }
 li {
-	list-style: none;
+    list-style: none;
 }
 ul.footerUl {
     float: left;
-	height: 19px;
-	margin: 1em;
-	
+    height: 19px;
+    margin: 1em;
+    
 }
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+ul.tab li {float: left;}
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+ul.tab li a:hover {background-color: #ddd;}
+
+ul.tab li a:focus, .active {background-color: #ccc;}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
 li.footerLi {
     display: inline-block;
     list-style: none;
@@ -403,8 +432,8 @@ p.date {
     margin: 0;
 }
 img.thumbnail {
-	width: 112px;
-	height: 63px;
+    width: 112px;
+    height: 63px;
 }
 
 /*    nämä, jos kapea ikkuna*/

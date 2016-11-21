@@ -4,8 +4,7 @@
     <link href="styles/style.css" type="text/css" rel=stylesheet>
 	<script src="scripts/indexScript.js"></script> <!-- index.php soittolistan nappiscriptit -->
 	<script src="scripts/YTPlayerScript.js"></script> <!-- index.php YouTube-soittimen scriptit -->
-					      
-
+	</head>				      
 <body>
 <?php include_once("includes/nav.html"); ?> <!-- header ja navigointilinkit -->
 <main>
@@ -21,10 +20,34 @@
 			</article>
 		<!-- Uuden kappaleen lisäyslomake -->
 			<article>
-				<h1>Lisää kappale</h1>
-				<input type="text" id="videoUrl" name="videoUrl" placeholder="https://www.youtube.com/watch?v=1yhTaFQJukx" onInput="getData(this.value)"><button onclick="addVideo()">>></button>
-				<br><p>Title: <span id=videoTitle name=videoTitle></span></p>
-				<p>Channel: <span id=channelTitle name=channelTitle></span></p>
+				<ul class="tab">
+				  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Lisää')" id="defaultOpen">Lisää kappale</a>
+					</li>
+				  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'chat')">chat</a></li>
+				</ul>
+
+				<div id="Lisää" class="tabcontent">
+					<h1>Lisää kappale</h1>
+					<input type="text" id="videoUrl" name="videoUrl" placeholder="https://www.youtube.com/watch?v=1yhTaFQJukx" onInput="getData(this.value)"><button onclick="addVideo()">>></button>
+					<br><p>Title: <span id=videoTitle name=videoTitle></span></p>
+					<p>Channel: <span id=channelTitle name=channelTitle></span></p>
+				</div>
+
+				<div id="chat" class="tabcontent">
+				  <div id="mastercontainer">
+				<h1>HUUTOLOOTA >:DDD</h1>
+
+				<p id='navbar'>Select Role: <a href='index.php?user_id=2'><span style='background-color: #ffc'>Admin</span></a>
+				</p>    <div id="container"></div>
+
+					<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+				    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+				    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+				    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+				    <script type="text/babel" src="js/react-chat.js"></script>
+
+			</div>
+				</div>
 			</article>
 	</section>
 	<!-- sivun oikea puoli -->
@@ -39,7 +62,7 @@
 	<button id="playlistButton" onclick="closeList()">Close</button> <!-- soittolistan nappi -->
 
 		<!-- chat -->
-		<aside id="chat">
+		<!--<aside id="chat">
 			<div id="mastercontainer">
 				<h1>HUUTOLOOTA >:DDD</h1>
 
@@ -51,17 +74,19 @@
 				    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
 				    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
 				    <script type="text/babel" src="js/react-chat.js"></script>
-</head>
-
 
 			</div>
 		</aside>
-		<button id="chatButton" onclick="closeChat()">Close</button> <!-- chatin nappi -->
+		<button id="chatButton" onclick="closeChat()">Close</button>--> <!-- chatin nappi -->
 
 		
 </main>
 
 <?php include_once("includes/footer.php"); ?> <!-- footer -->
+<script>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
 </body>
 
 <?php
