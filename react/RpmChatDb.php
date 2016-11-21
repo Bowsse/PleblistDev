@@ -5,7 +5,7 @@ class RpmChatDb {
   
   public function __construct() {
 	try {
-	    $this->dbConnection = new PDO("sqlite:/var/databases/chat.sqlite"); //tietokanta
+	    $this->dbConnection = new PDO("sqlite:/var/Databases/chat.sqlite"); //tietokanta
 	    //$this->dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 	    //$this->dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 	   $this->dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
