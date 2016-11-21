@@ -18,21 +18,21 @@
 			<article id=playerButtons>
 				<button class="playerButton" id="play" onclick="playVideo()">Play</button><button class="playerButton" id="skip" onclick="skipVideo()">Skip</button><button class="playerButton" id="mute" onclick="muteVideo()">Mute</button><input id="volume" type=range min="0" max="100" value=100 oninput="changeVolume(this.value)">
 			</article>
-		<!-- Uuden kappaleen lisäyslomake -->
+		<!-- Tabi lista -->
 			<article>
 				<ul class="tab">
 				  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Lisää')" id="defaultOpen">Lisää kappale</a>
 					</li>
 				  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'chat')">chat</a></li>
 				</ul>
-
+		<!-- Kappaleen lisäys -->
 				<div id="Lisää" class="tabcontent">
 					<h1>Lisää kappale</h1>
 					<input type="text" id="videoUrl" name="videoUrl" placeholder="https://www.youtube.com/watch?v=1yhTaFQJukx" onInput="getData(this.value)"><button onclick="addVideo()">>></button>
 					<br><p>Title: <span id=videoTitle name=videoTitle></span></p>
 					<p>Channel: <span id=channelTitle name=channelTitle></span></p>
 				</div>
-
+		<!-- Chatti  -->
 				<div id="chat" class="tabcontent">
 				  <div id="mastercontainer">
 				<h1>HUUTOLOOTA >:DDD</h1>
@@ -84,7 +84,7 @@
 
 <?php include_once("includes/footer.php"); ?> <!-- footer -->
 <script>
-// Get the element with id="defaultOpen" and click on it
+// kappaleen lisäys tabi defaulttina auki
 document.getElementById("defaultOpen").click();
 </script>
 </body>
