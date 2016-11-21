@@ -17,12 +17,14 @@
 			</div>
 		<!-- YouTube-soittimen napit -->
 			<article id=playerButtons>
-				<button class="playerButton" id="play" onclick="playVideo()">Play</button><button class="playerButton" id="mute" onclick="muteVideo()">Mute</button><input id="volume" type=range min="0" max="100" value=100 oninput="changeVolume()">
+				<button class="playerButton" id="play" onclick="playVideo()">Play</button><button class="playerButton" id="skip" onclick="skipVideo()">Skip</button><button class="playerButton" id="mute" onclick="muteVideo()">Mute</button><input id="volume" type=range min="0" max="100" value=100 oninput="changeVolume(this.value)">
 			</article>
 		<!-- Uuden kappaleen lisäyslomake -->
 			<article>
 				<h1>Lisää kappale</h1>
-				<input type="text" name="song" placeholder="Syötä linkki..."><button>>></button>
+				<input type="text" id="videoUrl" name="videoUrl" placeholder="https://www.youtube.com/watch?v=1yhTaFQJukx" onInput="getData(this.value)"><button onclick="addVideo()">>></button>
+				<br><p>Title: <span id=videoTitle name=videoTitle></span></p>
+				<p>Channel: <span id=channelTitle name=channelTitle></span></p>
 			</article>
 	</section>
 	<!-- sivun oikea puoli -->
@@ -73,7 +75,7 @@ function printTable(){
 	
 	//soittolistataulukon tulostus
 	while($row = $result->fetchArray()) {
-		echo	"<tr><td><img class='thumbnail' src='imgs/prk.jpg'></td>
+		echo	"<tr><td><img class='thumbnail' src='https://i.ytimg.com/vi/".$row[3]."/mqdefault.jpg' onclick=changeVideo('".$row[3]."')></td>
 				<td>
 					<ul class='test'>
 						<li><strong>".$row[1]."</strong></li>

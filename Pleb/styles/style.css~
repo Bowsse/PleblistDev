@@ -32,7 +32,6 @@ a:hover {
 }
 /* ------------- chatti paskaa --------------*/
 #mastercontainer {
-    width: 100%;
     background-color:aqua;
     border-radius: 3px;
     padding: 15px 15px 15px;
@@ -43,7 +42,7 @@ a:hover {
 .chat-container {
   border: 1px solid lightgreen;
   width: 90%;
-  max-height: 400px;
+  max-height: 500px;
   margin: auto;
 }
 

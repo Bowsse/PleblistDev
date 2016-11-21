@@ -56,18 +56,74 @@ function playVideo() {
     else {player.pauseVideo();}
 }
 
-function changeVideo() {
-    var id = document.getElementById("change").value;
-    player.loadVideoById(
-        id)
+function changeVideo(id) {
+	console.log(id);
+    player.loadVideoById(id);
 }
 
-function changeVolume() {
-    var volume = document.getElementById("volume").value;
-
-    player.setVolume(volume);
+function changeVolume(value) {
+    player.setVolume(value);
 }
 
+//lähettää lisättävän videon tiedot php:lle            !vaihda oikea php-sivu!
+function addVideo(){
+	var http = new XMLHttpRequest();
+	var url = "addVideo.php";
+	var videotitle = encodeURIComponent(document.getElementById("videoTitle").innerHTML);
+	var channeltitle = encodeURIComponent(document.getElementById("channelTitle").innerHTML);
+	
+	var videoUrl = document.getElementById("videoUrl").value;
+	var index = videoUrl.indexOf("=");
+	var videoid = videoUrl.substring(index+1, index+12);
+	var addedBy = "test";
+	
+	if(videotitle == "" || channeltitle == "" || videoid == ""){
+		alert("asd error");
+		return;
+	}
+	
+	var params = "videoTitle="+videotitle+"&channelTitle="+channeltitle+"&videoId="+videoid+"&addedBy="+addedBy;
+	
+	http.open("POST", url, true);
+
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) {
+			alert(http.responseText);
+		}
+	}
+	http.send(params);
+}
+
+//hakee videon tiedot YouTuben apista
+function getData(videoUrl){
+			var index = videoUrl.indexOf("=");
+			var videoId = videoUrl.substring(index+1, index+12);
+			
+			var source = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id="+videoId+"&key=AIzaSyDFXxQriPkJht3z9x14DZMOIF8ntpOZw7k";
+			$.ajax({
+				type: 'GET',
+				url: source,
+				contentType: "application/json",
+				dataType: 'json',
+				success: function (json) {
+					//alert(json.items[0].snippet.title +" "+ json.items[0].snippet.channelTitle); //title & channel
+					try{
+						document.getElementById("videoTitle").innerHTML = json.items[0].snippet.title;
+						document.getElementById("channelTitle").innerHTML = json.items[0].snippet.channelTitle;
+					}
+					catch(error){
+						document.getElementById("videoTitle").innerHTML = "";
+						document.getElementById("channelTitle").innerHTML = "";
+					}
+				},
+				error: function (e) {
+					alert(e);
+				}
+		});
+}
+	
 //css
 //iframe:
 //pointer-events: none;
